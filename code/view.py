@@ -1,7 +1,41 @@
-from browser import document, html, window, url
 
-container = document['body']
-container.html = ''
+#from .models import User
+#from .control import checkUser
+
+
+from browser import document, html, window
+
+container = document['content']
+container.html = " "
+
+
+def signIn():
+    div = html.DIV(id="container")
+    title = html.H1("Login")
+    input_name = html.INPUT(type="email", id="email", value="E-mail")
+    input_password = html.INPUT(type="text", id="password", value="Password")
+    input_enter = html.INPUT(type="submit", value = "Enter")
+    form = html.FORM()
+    form <= title + input_name + input_password + input_enter
+
+    header = html.BUTTON("Não tem uma conta? Cadastre-se agora!")
+    def signUp_go(ev):
+        container.clear()
+        signUp()
+    def enter_bt(ev):
+        #checkUser(document['email'].value, document['password'].value)
+        pass
+    input_enter.bind("click", enter_bt)
+
+    header.bind("click", signUp_go)
+
+    footer = html.P("&copy;IgorandasINC")
+    div = header + form + footer
+    container <= div
+
+    
+    return True
+
 
 def signUp():
   div = html.DIV(id='container')
@@ -93,27 +127,33 @@ def signUp():
 
   container <= sign_up_wrapper_form
 
+def home():
+    div = html.DIV(id="container")
+    menu = html.P("menu")
+    profile = html.P("menu")
+    about = html.P("menu")
+    models3D = html.P("menu")
+    user_sugestion = html.P("menu")
 
-def signIn():
-  div = html.DIV(id='container')
-  title = html.H1('Login')
-  input_name = html.INPUT(type='text', id='name', placeholder='Nome')
-  input_password = html.INPUT(type='text', id='password', placeholder='Senha')
-  submit = html.INPUT(type='submit', id='submit', value='Enviar')
-  form = html.FORM()
-  form <= title + input_name + input_password + submit
+    header = html.BUTTON("Não tem uma conta? Cadastre-se agora!")
+    def signUp_go(ev):
+        container.clear()
+        signUp()
+    
+    header.bind("click", signUp_go)
+    footer = html.P("&copy;Igorandas")
+    div = header + form + footer
+    container <= div
 
-  go_to_signUp = html.BUTTON("Não tem uma conta? Cadastre-se agora!")
-
-  def goToSignUp(ev):
-    container.clear()
-    signUp()
-
-  go_to_signUp.bind("click", goToSignUp)
-
-  footer = html.P("&copy;Igorandas")
-  div <= go_to_signUp + form + footer
-  container <= div
-  
+    return True
 
 signIn()
+
+
+
+
+
+
+
+
+
